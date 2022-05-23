@@ -42,5 +42,16 @@ router.delete('/:idMar', function(req, res, next) {
   });
 });
 
-
+router.put('/:idMar', function(req, res, next) {
+  const body = req.body
+  Marvel.updateOne({'id':req.params.idMar},
+  body,
+  (err)=>{
+    if(err){
+      res.json({'Error':'No existe'})
+    }else{
+      res.json({'Estatus':'Actualizado'})
+    }
+  });
+});
 module.exports = router;
